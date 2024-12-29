@@ -96,7 +96,7 @@ client.on('error', (err) => {
     SteamUser.EResult.NotLoggedOn, // Not logged on
     SteamUser.EResult.NoConnection, // No connection
     SteamUser.EResult.InvalidPassword, // Invalid password
-    SteamUser.EResult.LoggedInElsewhere, // Logged in elsewhere
+    // SteamUser.EResult.LoggedInElsewhere, // Logged in elsewhere
     SteamUser.EResult.Timeout, // Timeout
     SteamUser.EResult.ConnectFailed, // Connection failed
     SteamUser.EResult.HandshakeFailed, // Handshake failed
