@@ -2,7 +2,6 @@ const SteamUser = require('steam-user');
 const SteamCommunity = require('steamcommunity');
 const SteamTradeManager = require('steam-tradeoffer-manager');
 const SteamTotp = require('steam-totp');
-const fs = require('fs');
 const winston = require('winston');
 
 // Configure Winston logger
@@ -45,17 +44,6 @@ if (!config.accountName || !config.password || !config.sharedSecret || !config.i
   logger.error('Steam credentials are not fully set in environment variables.');
   process.exit(1);
 }
-
-// Handle uncaught exceptions and unhandled rejections
-process.on('uncaughtException', (err) => {
-  logger.error(`Uncaught Exception: ${err}`);
-  // Optionally, restart or perform other actions
-});
-
-process.on('unhandledRejection', (reason, promise) => {
-  logger.error(`Unhandled Rejection at: ${promise} reason: ${reason}`);
-  // Optionally, restart or perform other actions
-});
 
 let loginAttempts = 0;
 let reconnectAttempts = 0;
@@ -129,8 +117,6 @@ client.on('error', (err) => {
   if (criticalErrors.includes(err.eresult)) {
     logger.info('Critical error encountered. Attempting to reconnect...');
     handleReconnect();
-  } else {
-    logger.warn('Non-critical error encountered, no reconnect attempt made.');
   }
 });
 
