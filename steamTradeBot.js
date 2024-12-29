@@ -120,15 +120,15 @@ client.on('error', (err) => {
   }
 });
 
-client.on('disconnected', (eresult, msg) => {
-  logger.warn(`Disconnected from Steam (${eresult}): ${msg}. Attempting to relog.`);
-  handleReconnect(); // Attempt re-login after exponential backoff
-});
+// client.on('disconnected', (eresult, msg) => {
+//   logger.warn(`Disconnected from Steam (${eresult}): ${msg}. Attempting to relog.`);
+//   handleReconnect(); // Attempt re-login after exponential backoff
+// });
 
-client.on('loggedOff', (eresult) => {
-  logger.warn(`Logged off from Steam (${eresult}). Attempting to relog.`);
-  handleReconnect(); // Attempt re-login after exponential backoff
-});
+// client.on('loggedOff', (eresult) => {
+//   logger.warn(`Logged off from Steam (${eresult}). Attempting to relog.`);
+//   handleReconnect(); // Attempt re-login after exponential backoff
+// });
 
 client.on('webSession', (sessionId, cookies) => {
   logger.info('Web session established.');
