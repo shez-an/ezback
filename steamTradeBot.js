@@ -55,7 +55,6 @@ const criticalErrors = [
   SteamUser.EResult.NotLoggedOn,
   SteamUser.EResult.NoConnection,
   SteamUser.EResult.InvalidPassword,
-  // SteamUser.EResult.LoggedInElsewhere,
   SteamUser.EResult.Timeout,
   SteamUser.EResult.ConnectFailed,
   SteamUser.EResult.HandshakeFailed,
@@ -67,6 +66,8 @@ const criticalErrors = [
   SteamUser.EResult.AccountLocked,
   SteamUser.EResult.InvalidItemType
 ];
+
+let isLoggedIn = false;  // New flag to track login state
 
 // Function to log in to Steam
 function loginToSteam() {
@@ -105,30 +106,41 @@ loginToSteam();
 // Steam client event handlers
 client.on('loggedOn', () => {
   loginAttempts = 0; // Reset on successful login
+  isLoggedIn = true;  // Set the login state to true
+  logger.info('Steam client logged in and online');
   client.setPersona(SteamUser.EPersonaState.Online);
   client.gamesPlayed([252490]); // Example game ID
-  logger.info('Steam client logged in and online');
 });
 
 client.on('error', (err) => {
   logger.error(`Steam client encountered an error: ${err}`);
 
+  // Log error result for debugging
+  logger.info(`Error result: ${err.eresult}, Error message: ${err.message}`);
+
   // Check if the error is a critical error and requires a re-login
   if (criticalErrors.includes(err.eresult)) {
     logger.info('Critical error encountered. Attempting to reconnect...');
     handleReconnect();
+  } else {
+    logger.info('Non-critical error encountered. No reconnect triggered.');
   }
 });
 
-// client.on('disconnected', (eresult, msg) => {
-//   logger.warn(`Disconnected from Steam (${eresult}): ${msg}. Attempting to relog.`);
-//   handleReconnect(); // Attempt re-login after exponential backoff
-// });
+client.on('disconnected', (eresult, msg) => {
+  logger.warn(`Disconnected from Steam (${eresult}): ${msg}.`);
 
-// client.on('loggedOff', (eresult) => {
-//   logger.warn(`Logged off from Steam (${eresult}). Attempting to relog.`);
-//   handleReconnect(); // Attempt re-login after exponential backoff
-// });
+  // Log the disconnection reason
+  logger.info(`Disconnected due to: ${eresult} - ${msg}`);
+
+  // Only attempt reconnect if the bot is not logged in
+  if (!isLoggedIn) {
+    logger.info('Bot is not logged in, attempting reconnect.');
+    handleReconnect();  // Attempt re-login after exponential backoff
+  } else {
+    logger.info('Bot is logged in, not reconnecting.');
+  }
+});
 
 client.on('webSession', (sessionId, cookies) => {
   logger.info('Web session established.');
@@ -141,9 +153,16 @@ client.on('webSession', (sessionId, cookies) => {
 const HEARTBEAT_INTERVAL = 60000; // 60 seconds
 
 setInterval(() => {
+  // Log detailed heartbeat
   if (!client.steamID || client.steamID.getSteamID64() === '0') {
+    console.log(client.steamID, client.steamID.getSteamID64());
+    console.log(client);
+    
+    
+    console.log(`[${new Date().toISOString()}] Heartbeat: Bot is offline.`);
+    
     logger.warn('Bot is not logged in. Attempting to reconnect...');
-    handleReconnect();
+    // handleReconnect();
   } else {
     logger.info('Heartbeat: Bot is online.');
   }
@@ -163,6 +182,7 @@ process.on('SIGTERM', () => {
 });
 
 module.exports = { manager };
+
 
 
 
