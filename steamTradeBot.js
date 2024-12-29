@@ -58,7 +58,27 @@ process.on('unhandledRejection', (reason, promise) => {
 });
 
 let loginAttempts = 0;
+let reconnectAttempts = 0;
 const MAX_LOGIN_ATTEMPTS = 10;
+const MAX_RECONNECT_ATTEMPTS = 5;
+
+// Critical errors that require re-login
+const criticalErrors = [
+  SteamUser.EResult.NotLoggedOn,
+  SteamUser.EResult.NoConnection,
+  SteamUser.EResult.InvalidPassword,
+  // SteamUser.EResult.LoggedInElsewhere,
+  SteamUser.EResult.Timeout,
+  SteamUser.EResult.ConnectFailed,
+  SteamUser.EResult.HandshakeFailed,
+  SteamUser.EResult.RemoteDisconnect,
+  SteamUser.EResult.AccountNotFound,
+  SteamUser.EResult.ServiceUnavailable,
+  SteamUser.EResult.RateLimitExceeded,
+  SteamUser.EResult.InvalidLoginAuthCode,
+  SteamUser.EResult.AccountLocked,
+  SteamUser.EResult.InvalidItemType
+];
 
 // Function to log in to Steam
 function loginToSteam() {
@@ -77,6 +97,20 @@ function loginToSteam() {
   loginAttempts += 1;
 }
 
+// Retry with exponential backoff
+function handleReconnect() {
+  if (reconnectAttempts >= MAX_RECONNECT_ATTEMPTS) {
+    logger.error('Max reconnect attempts reached. Stopping...');
+    process.exit(1); // Exit after max attempts reached
+  }
+
+  const delay = Math.pow(2, reconnectAttempts) * 1000; // Exponential backoff: 1s, 2s, 4s, 8s...
+  logger.info(`Attempting to reconnect in ${delay / 1000} seconds...`);
+
+  reconnectAttempts++;
+  setTimeout(loginToSteam, delay); // Retry login with exponential backoff
+}
+
 // Log in to Steam initially
 loginToSteam();
 
@@ -91,43 +125,23 @@ client.on('loggedOn', () => {
 client.on('error', (err) => {
   logger.error(`Steam client encountered an error: ${err}`);
 
-  // Only trigger a re-login for specific errors
-  const shouldRelog = [
-    SteamUser.EResult.NotLoggedOn, // Not logged on
-    SteamUser.EResult.NoConnection, // No connection
-    SteamUser.EResult.InvalidPassword, // Invalid password
-    // SteamUser.EResult.LoggedInElsewhere, // Logged in elsewhere
-    SteamUser.EResult.Timeout, // Timeout
-    SteamUser.EResult.ConnectFailed, // Connection failed
-    SteamUser.EResult.HandshakeFailed, // Handshake failed
-    SteamUser.EResult.RemoteDisconnect, // Remote disconnect
-    SteamUser.EResult.AccountNotFound, // Account not found
-    SteamUser.EResult.ServiceUnavailable, // Service unavailable
-    SteamUser.EResult.RateLimitExceeded, // Rate limit exceeded
-    SteamUser.EResult.InvalidLoginAuthCode, // Invalid login auth code
-    SteamUser.EResult.AccountLocked, // Account locked
-    SteamUser.EResult.InvalidItemType // Invalid item type (could be related to a trade issue)
-  ].includes(err.eresult);
-
-  if (shouldRelog) {
-    logger.info('Attempting to reconnect in 5 seconds...');
-    setTimeout(loginToSteam, 5000); // Try re-logging in after 5 seconds
+  // Check if the error is a critical error and requires a re-login
+  if (criticalErrors.includes(err.eresult)) {
+    logger.info('Critical error encountered. Attempting to reconnect...');
+    handleReconnect();
   } else {
-    logger.warn('Encountered an error that does not require a re-login.');
-    // Handle other errors or decide to exit, log, or alert the user accordingly
-    // For example, you can exit or take a different action:
-    // process.exit(1); // Uncomment if you want to terminate on certain errors
+    logger.warn('Non-critical error encountered, no reconnect attempt made.');
   }
 });
 
 client.on('disconnected', (eresult, msg) => {
   logger.warn(`Disconnected from Steam (${eresult}): ${msg}. Attempting to relog.`);
-  setTimeout(loginToSteam, 5000); // Attempt re-login after 5 seconds
+  handleReconnect(); // Attempt re-login after exponential backoff
 });
 
 client.on('loggedOff', (eresult) => {
   logger.warn(`Logged off from Steam (${eresult}). Attempting to relog.`);
-  setTimeout(loginToSteam, 5000); // Attempt re-login after 5 seconds
+  handleReconnect(); // Attempt re-login after exponential backoff
 });
 
 client.on('webSession', (sessionId, cookies) => {
@@ -143,7 +157,7 @@ const HEARTBEAT_INTERVAL = 60000; // 60 seconds
 setInterval(() => {
   if (!client.steamID || client.steamID.getSteamID64() === '0') {
     logger.warn('Bot is not logged in. Attempting to reconnect...');
-    loginToSteam();
+    handleReconnect();
   } else {
     logger.info('Heartbeat: Bot is online.');
   }
