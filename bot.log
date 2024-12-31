@@ -196,3 +196,289 @@
 2024-12-29T02:24:50.981Z [INFO]: Critical error encountered. Attempting to reconnect...
 2024-12-29T02:24:50.982Z [INFO]: Attempting to reconnect in 4 seconds...
 2024-12-29T02:24:52.684Z [INFO]: Received SIGINT. Shutting down gracefully...
+2024-12-29T03:03:16.663Z [INFO]: Config: Account Name is set.
+2024-12-29T03:03:16.666Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-29T03:03:19.470Z [INFO]: Steam client logged in and online
+2024-12-29T03:03:19.907Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-29T03:03:19.907Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-29T03:03:19.908Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-29T03:03:19.909Z [INFO]: Web session established.
+2024-12-29T03:04:16.669Z [INFO]: Heartbeat: Bot is online.
+2024-12-29T03:04:27.429Z [INFO]: Config: Account Name is set.
+2024-12-29T03:04:27.431Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-29T03:04:30.247Z [INFO]: Steam client logged in and online
+2024-12-29T03:04:30.655Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-29T03:04:30.655Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-29T03:04:30.656Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-29T03:05:27.442Z [INFO]: Heartbeat: Bot is online.
+2024-12-29T03:06:09.657Z [INFO]: Config: Account Name is set.
+2024-12-29T03:06:09.659Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-29T03:06:12.416Z [INFO]: Steam client logged in and online
+2024-12-29T03:06:12.843Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-29T03:06:12.844Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-29T03:06:12.844Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-29T03:06:12.845Z [INFO]: Web session established.
+2024-12-29T03:07:09.670Z [INFO]: Heartbeat: Bot is online.
+2024-12-29T03:08:09.670Z [INFO]: Heartbeat: Bot is online.
+2024-12-29T03:09:09.674Z [INFO]: Heartbeat: Bot is online.
+2024-12-29T03:09:48.096Z [INFO]: Received SIGINT. Shutting down gracefully...
+2024-12-31T01:10:26.647Z [INFO]: Config: Account Name is set.
+2024-12-31T01:10:26.649Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T01:10:29.389Z [INFO]: Steam client logged in and online
+2024-12-31T01:10:29.829Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T01:10:29.830Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T01:10:29.830Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T01:10:29.831Z [INFO]: Web session established.
+2024-12-31T03:28:39.370Z [INFO]: Config: Account Name is set.
+2024-12-31T03:28:39.372Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T03:28:42.311Z [INFO]: Steam client logged in and online
+2024-12-31T03:28:42.746Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T03:28:42.747Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T03:28:42.747Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T03:28:42.749Z [INFO]: Web session established.
+2024-12-31T03:29:39.378Z [INFO]: Heartbeat: Bot is online.
+2024-12-31T03:30:39.382Z [INFO]: Heartbeat: Bot is online.
+2024-12-31T03:31:12.699Z [INFO]: Config: Account Name is set.
+2024-12-31T03:31:12.701Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T03:31:15.519Z [INFO]: Steam client logged in and online
+2024-12-31T03:31:15.969Z [INFO]: Web session established.
+2024-12-31T03:31:16.002Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T03:31:16.002Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T03:31:16.002Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T03:32:12.715Z [INFO]: Heartbeat: Bot is online.
+2024-12-31T03:33:12.718Z [INFO]: Heartbeat: Bot is online.
+2024-12-31T03:34:12.724Z [INFO]: Heartbeat: Bot is online.
+2024-12-31T03:35:12.729Z [INFO]: Heartbeat: Bot is online.
+2024-12-31T03:36:12.732Z [INFO]: Heartbeat: Bot is online.
+2024-12-31T03:37:12.744Z [INFO]: Heartbeat: Bot is online.
+2024-12-31T03:38:12.748Z [INFO]: Heartbeat: Bot is online.
+2024-12-31T03:39:12.763Z [INFO]: Heartbeat: Bot is online.
+2024-12-31T03:39:37.262Z [INFO]: Config: Account Name is set.
+2024-12-31T03:40:10.846Z [INFO]: Config: Account Name is set.
+2024-12-31T03:41:10.862Z [WARN]: Bot is not logged in. Attempting to reconnect...
+2024-12-31T03:41:10.862Z [INFO]: Attempting to reconnect in 1 seconds...
+2024-12-31T03:41:11.875Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T03:41:14.568Z [INFO]: Steam client logged in and online
+2024-12-31T03:41:14.988Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T03:41:14.989Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T03:41:14.989Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T03:41:14.990Z [INFO]: Web session established.
+2024-12-31T03:41:43.251Z [INFO]: Config: Account Name is set.
+2024-12-31T03:42:41.459Z [INFO]: Config: Account Name is set.
+2024-12-31T03:43:41.475Z [WARN]: Bot is not logged in. Attempting to reconnect...
+2024-12-31T03:43:41.475Z [INFO]: Attempting to reconnect in 1 seconds...
+2024-12-31T03:43:42.478Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T03:43:45.028Z [INFO]: Steam client logged in and online
+2024-12-31T03:43:45.481Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T03:43:45.482Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T03:43:45.482Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T03:43:45.483Z [INFO]: Web session established.
+2024-12-31T03:44:02.053Z [INFO]: Received SIGINT. Shutting down gracefully...
+2024-12-31T03:44:09.930Z [INFO]: Config: Account Name is set.
+2024-12-31T03:45:09.932Z [WARN]: Bot is not logged in. Attempting to reconnect...
+2024-12-31T03:45:09.932Z [INFO]: Attempting to reconnect in 1 seconds...
+2024-12-31T03:45:10.933Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T03:45:13.669Z [INFO]: Steam client logged in and online
+2024-12-31T03:45:14.115Z [INFO]: Web session established.
+2024-12-31T03:45:14.158Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T03:45:14.159Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T03:45:14.159Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T03:45:17.917Z [INFO]: Received SIGINT. Shutting down gracefully...
+2024-12-31T03:46:04.430Z [INFO]: Config: Account Name is set.
+2024-12-31T03:50:45.687Z [INFO]: Config: Account Name is set.
+2024-12-31T03:51:29.897Z [INFO]: Config: Account Name is set.
+2024-12-31T03:53:25.844Z [INFO]: Config: Account Name is set.
+2024-12-31T03:54:56.248Z [INFO]: Config: Account Name is set.
+2024-12-31T03:57:12.548Z [INFO]: Config: Account Name is set.
+2024-12-31T03:59:14.671Z [INFO]: Config: Account Name is set.
+2024-12-31T04:00:31.688Z [INFO]: Config: Account Name is set.
+2024-12-31T04:01:38.463Z [INFO]: Config: Account Name is set.
+2024-12-31T04:01:52.691Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T04:01:53.184Z [INFO]: Attempting to log in to Steam (Attempt 2)...
+2024-12-31T04:02:48.231Z [INFO]: Config: Account Name is set.
+2024-12-31T04:02:51.861Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T04:02:52.417Z [INFO]: Attempting to log in to Steam (Attempt 2)...
+2024-12-31T04:03:13.230Z [INFO]: Config: Account Name is set.
+2024-12-31T04:03:30.149Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T04:03:32.839Z [INFO]: Steam client logged in and online
+2024-12-31T04:03:33.284Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T04:03:33.284Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T04:03:33.285Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T04:03:33.286Z [INFO]: Web session established.
+2024-12-31T04:04:33.755Z [INFO]: Config: Account Name is set.
+2024-12-31T04:05:32.655Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T04:05:35.495Z [INFO]: Steam client logged in and online
+2024-12-31T04:05:35.931Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T04:05:35.932Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T04:05:35.932Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T04:05:35.934Z [INFO]: Web session established.
+2024-12-31T04:09:17.193Z [INFO]: Config: Account Name is set.
+2024-12-31T04:09:31.912Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T04:09:34.467Z [INFO]: Steam client logged in and online
+2024-12-31T04:09:34.900Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T04:09:34.901Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T04:09:34.901Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T04:09:34.902Z [INFO]: Web session established.
+2024-12-31T04:12:18.603Z [INFO]: Config: Account Name is set.
+2024-12-31T04:14:08.023Z [INFO]: Config: Account Name is set.
+2024-12-31T04:15:20.218Z [INFO]: Config: Account Name is set.
+2024-12-31T04:16:49.664Z [INFO]: Config: Account Name is set.
+2024-12-31T04:17:22.997Z [INFO]: Config: Account Name is set.
+2024-12-31T04:17:46.723Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T04:17:47.268Z [INFO]: Attempting to log in to Steam (Attempt 2)...
+2024-12-31T04:18:35.853Z [INFO]: Config: Account Name is set.
+2024-12-31T04:18:54.369Z [INFO]: Config: Account Name is set.
+2024-12-31T04:19:55.990Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T04:19:58.546Z [INFO]: Steam client logged in and online
+2024-12-31T04:19:58.908Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T04:19:58.909Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T04:19:58.909Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T04:19:58.910Z [INFO]: Web session established.
+2024-12-31T04:22:06.136Z [INFO]: Config: Account Name is set.
+2024-12-31T04:22:31.090Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T04:22:33.788Z [INFO]: Steam client logged in and online
+2024-12-31T04:22:34.254Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T04:22:34.254Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T04:22:34.254Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T04:22:34.256Z [INFO]: Web session established.
+2024-12-31T04:25:18.048Z [INFO]: Config: Account Name is set.
+2024-12-31T04:25:52.480Z [INFO]: Config: Account Name is set.
+2024-12-31T04:26:00.402Z [INFO]: Config: Account Name is set.
+2024-12-31T04:26:11.564Z [INFO]: Config: Account Name is set.
+2024-12-31T04:29:59.807Z [INFO]: Config: Account Name is set.
+2024-12-31T04:30:24.563Z [INFO]: Config: Account Name is set.
+2024-12-31T04:34:26.989Z [INFO]: Config: Account Name is set.
+2024-12-31T04:40:03.655Z [INFO]: Config: Account Name is set.
+2024-12-31T04:40:36.134Z [INFO]: Config: Account Name is set.
+2024-12-31T04:47:50.773Z [INFO]: Config: Account Name is set.
+2024-12-31T04:48:13.133Z [INFO]: Config: Account Name is set.
+2024-12-31T04:50:59.789Z [INFO]: Config: Account Name is set.
+2024-12-31T04:51:27.133Z [INFO]: Config: Account Name is set.
+2024-12-31T04:53:58.679Z [INFO]: Config: Account Name is set.
+2024-12-31T04:54:58.899Z [INFO]: Config: Account Name is set.
+2024-12-31T05:02:42.450Z [INFO]: Config: Account Name is set.
+2024-12-31T05:03:26.886Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T05:03:29.521Z [INFO]: Steam client logged in and online
+2024-12-31T05:03:29.964Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T05:03:29.964Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T05:03:29.965Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T05:03:29.966Z [INFO]: Web session established.
+2024-12-31T05:05:28.863Z [INFO]: Config: Account Name is set.
+2024-12-31T05:09:00.653Z [INFO]: Config: Account Name is set.
+2024-12-31T05:09:36.621Z [INFO]: Config: Account Name is set.
+2024-12-31T05:09:59.647Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T05:10:02.265Z [INFO]: Steam client logged in and online
+2024-12-31T05:10:02.715Z [INFO]: Web session established.
+2024-12-31T05:10:02.726Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T05:10:02.726Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T05:10:02.727Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T05:18:51.582Z [INFO]: Config: Account Name is set.
+2024-12-31T05:19:33.032Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T05:19:35.660Z [INFO]: Steam client logged in and online
+2024-12-31T05:19:36.079Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T05:19:36.080Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T05:19:36.081Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T05:19:36.082Z [INFO]: Web session established.
+2024-12-31T05:24:45.405Z [INFO]: Config: Account Name is set.
+2024-12-31T05:25:13.307Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T05:25:15.901Z [INFO]: Steam client logged in and online
+2024-12-31T05:25:16.348Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T05:25:16.349Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T05:25:16.349Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T05:25:16.350Z [INFO]: Web session established.
+2024-12-31T05:26:13.223Z [INFO]: Config: Account Name is set.
+2024-12-31T05:30:38.248Z [INFO]: Config: Account Name is set.
+2024-12-31T05:31:25.544Z [INFO]: Config: Account Name is set.
+2024-12-31T05:31:59.129Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T05:32:01.805Z [INFO]: Steam client logged in and online
+2024-12-31T05:32:02.261Z [INFO]: Web session established.
+2024-12-31T05:32:02.272Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T05:32:02.272Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T05:32:02.273Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T05:36:17.716Z [INFO]: Received SIGINT. Shutting down gracefully...
+2024-12-31T05:36:23.747Z [INFO]: Config: Account Name is set.
+2024-12-31T05:36:44.233Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T05:36:46.894Z [INFO]: Steam client logged in and online
+2024-12-31T05:36:47.340Z [INFO]: Web session established.
+2024-12-31T05:36:47.347Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T05:36:47.348Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T05:36:47.348Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T05:54:09.678Z [INFO]: Config: Account Name is set.
+2024-12-31T05:54:15.205Z [INFO]: Received SIGINT. Shutting down gracefully...
+2024-12-31T05:54:19.334Z [INFO]: Config: Account Name is set.
+2024-12-31T05:54:36.343Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T05:54:38.967Z [INFO]: Steam client logged in and online
+2024-12-31T05:54:39.408Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T05:54:39.408Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T05:54:39.409Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T05:54:39.410Z [INFO]: Web session established.
+2024-12-31T05:58:40.449Z [INFO]: Config: Account Name is set.
+2024-12-31T05:59:05.499Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T05:59:08.095Z [INFO]: Steam client logged in and online
+2024-12-31T05:59:08.536Z [INFO]: Web session established.
+2024-12-31T05:59:08.548Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T05:59:08.548Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T05:59:08.548Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T06:02:18.444Z [INFO]: Config: Account Name is set.
+2024-12-31T06:05:42.946Z [INFO]: Config: Account Name is set.
+2024-12-31T06:06:18.476Z [INFO]: Config: Account Name is set.
+2024-12-31T06:06:26.194Z [INFO]: Config: Account Name is set.
+2024-12-31T06:06:43.384Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T06:06:46.130Z [INFO]: Steam client logged in and online
+2024-12-31T06:06:46.559Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T06:06:46.560Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T06:06:46.560Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T06:06:46.561Z [INFO]: Web session established.
+2024-12-31T06:08:33.767Z [INFO]: Config: Account Name is set.
+2024-12-31T06:08:46.849Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T06:08:49.582Z [INFO]: Steam client logged in and online
+2024-12-31T06:08:49.995Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T06:08:49.996Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T06:08:49.996Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T06:08:49.997Z [INFO]: Web session established.
+2024-12-31T06:13:43.339Z [INFO]: Config: Account Name is set.
+2024-12-31T06:15:19.511Z [INFO]: Config: Account Name is set.
+2024-12-31T06:15:19.513Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T06:15:22.267Z [INFO]: Steam client logged in and online
+2024-12-31T06:15:22.716Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T06:15:22.716Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T06:15:22.717Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T06:15:22.718Z [INFO]: Web session established.
+2024-12-31T06:16:19.524Z [WARN]: Bot is not logged in. Attempting to reconnect...
+2024-12-31T06:16:19.525Z [INFO]: Attempting to reconnect in 1 seconds...
+2024-12-31T06:16:20.534Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T06:16:22.884Z [INFO]: Steam client logged in and online
+2024-12-31T06:16:23.256Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T06:16:23.256Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T06:16:23.256Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T06:16:23.257Z [INFO]: Web session established.
+2024-12-31T06:17:19.531Z [WARN]: Bot is not logged in. Attempting to reconnect...
+2024-12-31T06:17:19.531Z [INFO]: Attempting to reconnect in 2 seconds...
+2024-12-31T06:17:21.532Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T06:17:23.998Z [INFO]: Steam client logged in and online
+2024-12-31T06:17:24.400Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T06:17:24.401Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T06:17:24.401Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T06:17:24.402Z [INFO]: Web session established.
+2024-12-31T06:17:25.512Z [INFO]: Received SIGINT. Shutting down gracefully...
+2024-12-31T06:19:25.220Z [INFO]: Config: Account Name is set.
+2024-12-31T06:19:25.222Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T06:19:27.959Z [INFO]: Steam client logged in and online
+2024-12-31T06:19:28.393Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T06:19:28.393Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T06:19:28.394Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T06:19:28.395Z [INFO]: Web session established.
+2024-12-31T06:20:25.239Z [WARN]: Bot is not logged in. Attempting to reconnect...
+2024-12-31T06:20:25.240Z [INFO]: Attempting to reconnect in 1 seconds...
+2024-12-31T06:20:26.255Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T06:20:26.665Z [INFO]: Received SIGINT. Shutting down gracefully...
+2024-12-31T06:21:04.081Z [INFO]: Config: Account Name is set.
+2024-12-31T06:21:04.083Z [INFO]: Attempting to log in to Steam (Attempt 1)...
+2024-12-31T06:21:07.016Z [INFO]: Steam client logged in and online
+2024-12-31T06:21:07.438Z [ERROR]: Steam client encountered an error: Error: LoggedInElsewhere
+2024-12-31T06:21:07.439Z [INFO]: Error result: 6, Error message: LoggedInElsewhere
+2024-12-31T06:21:07.439Z [INFO]: Non-critical error encountered. No reconnect triggered.
+2024-12-31T06:21:07.440Z [INFO]: Web session established.
+2024-12-31T06:22:04.097Z [INFO]: Heartbeat: Bot is online.
+2024-12-31T06:23:04.112Z [INFO]: Heartbeat: Bot is online.
+2024-12-31T06:23:53.141Z [INFO]: Received SIGINT. Shutting down gracefully...

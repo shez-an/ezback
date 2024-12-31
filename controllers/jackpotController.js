@@ -4,18 +4,13 @@ const User = require('../models/userSchema');
 const io = require('../socket');
 const jackpotManager = require('../jackpotManager');
 const generateRandomColor = require('../utils/randcolor');
-const { manager } = require('../steamTradeBot'); // Import trade bot manager
+const { manager, loginToSteam, tradeResponseErrors } = require('../steamTradeBot'); // Import trade bot manager
 const SteamTradeManager = require('steam-tradeoffer-manager');
 
-// Function to send trade offer using user's Trade URL
-const sendTradeOfferToUser = async (tradeUrl, items) => {
-  // console.log(manager);
-  // console.log(items);
-  
-  // console.log(process.env.TRADE_OFFER_URL);
+const sendTradeOfferToUser = async (tradeUrl, items, attempt = 1) => {
+  const MAX_RETRY_ATTEMPTS = 1;
 
   const tradeOffer = manager.createOffer(tradeUrl); // Use the user's Trade URL directly
-  
   
   // Add the items the bot is requesting from the user
   items.forEach(item => {
@@ -26,29 +21,90 @@ const sendTradeOfferToUser = async (tradeUrl, items) => {
     });
   });
 
-  tradeOffer.setMessage('You are joining the jackpot.');
+  tradeOffer.setMessage(`
+Welcome to JuicySkins! 🍊You're about to join the jackpot with your awesome skins. Good luck!
+🔥 Your items are safe with us. 
+💎 The jackpot is heating up, so get ready to win big!
+Don't forget to accept the trade offer and join the fun!
+JuicySkins Team
+`);
   console.log(tradeOffer);
-  
   
   // Send the trade offer and return its ID and URL
   return new Promise((resolve, reject) => {
-    tradeOffer.send((err, status) => {
-      console.log(err)
+    tradeOffer.send(async (err, status) => {
       if (err) {
-      
-        
-        console.error('Failed to send trade offer:', err);
-        return reject(err);
-      }
+        console.error('Failed to send trade offer:', typeof(err.message));
+        console.error('Failed to send trade offer:', err.eresult);
+        console.error('Failed to send trade offer:', err.name);
+        console.error('Failed to send trade offer:', err.stack);
+        console.error('Failed to send trade offer:', err.cause);
 
-      console.log(`Trade offer sent to user with status: ${status}`);
-      resolve({
-        offerId: tradeOffer.id,
-        offerUrl: `https://steamcommunity.com/tradeoffer/${tradeOffer.id}`, // Trade offer URL
-      });
+        // Check if the error is a critical error that requires re-login
+        if (tradeResponseErrors.includes(err.message)) {
+          console.log(`Critical error encountered. Retrying trade offer attempt ${attempt}...`);
+
+          // Retry the offer after re-login
+          if (attempt <= MAX_RETRY_ATTEMPTS) {
+            try {
+              // Trigger re-login if the error message is "Not Logged In"
+              if (err.message === "Not Logged In") {
+                await loginToSteam();  // Trigger the login process (reuse your login function)
+                sendTradeOfferToUser(tradeUrl, items, attempt + 1) // Retry sending the trade offer
+                  .then(resolve)
+                  .catch(reject);
+              } else if (err.message === "Trade Banned Target") {
+                // Handle Trade Banned Target error
+                const errorResponse = {
+                  success: false,
+                  error: "Trade Banned Target",
+                  message: "The target is trade banned. Cannot send trade offer.",
+                  code: "TRADE_BANNED_TARGET"
+                };
+                reject(errorResponse); // Reject with structured error object
+              }
+            } catch (loginError) {
+              console.error('Re-login failed, retrying trade offer failed.', loginError);
+              const errorResponse = {
+                success: false,
+                error: "Login Failure",
+                message: "Re-login failed, retrying trade offer failed.",
+                code: "LOGIN_FAILURE"
+              };
+              reject(errorResponse); // Reject with structured error object
+            }
+          } else {
+            console.error('Max retry attempts reached. Could not send trade offer.');
+            const errorResponse = {
+              success: false,
+              error: "Server Error",
+              message: "There is problem with the server please try again",
+              code: "MAX_RETRY_ATTEMPTS"
+            };
+            reject(errorResponse); // Reject with structured error object
+          }
+        } else {
+          // If not a critical error, just reject the promise with structured error
+          const errorResponse = {
+            success: false,
+            error: "Unknown Error",
+            message: err.message,
+            code: "UNKNOWN_ERROR"
+          };
+          reject(errorResponse);
+        }
+      } else {
+        console.log(`Trade offer sent to user with status: ${status}`);
+        resolve({
+          success: true,
+          offerId: tradeOffer.id,
+          offerUrl: `https://steamcommunity.com/tradeoffer/${tradeOffer.id}`, // Trade offer URL
+        });
+      }
     });
   });
 };
+
 
 // Track trade offer acceptance
 const trackTradeOffer = (offerId, userId, itemIds, jackpotId) => {
@@ -175,7 +231,7 @@ const joinJackpot = async (req, res) => {
     // Find or create the current jackpot (waiting or in-progress)
     let jackpot = await Jackpot.findOne({ status: { $in: ['in_progress', 'waiting'] } });
     if (!jackpot) {
-      jackpot =  new Jackpot({ status: 'waiting', totalValue: 0, participants: [] });
+      jackpot = new Jackpot({ status: 'waiting', totalValue: 0, participants: [] });
       await jackpot.save();
     }
 
@@ -188,8 +244,8 @@ const joinJackpot = async (req, res) => {
     if (!tradeUrl) {
       return res.json({
         msg: 'User does not have a Steam Trade URL. Please update your profile.',
-        tradeUrl:false
-       });
+        tradeUrl: false
+      });
     }
 
     // Fetch the items
@@ -197,29 +253,53 @@ const joinJackpot = async (req, res) => {
     if (items.length === 0) return res.status(404).json({ error: 'No items found' });
 
     // Send trade offer to the user using their Trade URL from the user schema
-    // console.log(process.env.TRADE_OFFER_URL);
-    
     try {
-    // console.log(manager);
-      // console.log(jackpot);
-      
-      const tradeData = await sendTradeOfferToUser(tradeUrl,items);
+      const tradeData = await sendTradeOfferToUser(tradeUrl, items);
 
-      // Send trade URL to user
-      // console.log(tradeData);
-      // await addUserToJackpot(userId, itemIds, jackpot._id);
+      // If trade offer fails
+      // if (!tradeData.success) {
+      //   if (tradeData.error === 'Trade Banned Target') {
+      //     return res.status(403).json({
+      //       error: 'User is trade banned and cannot receive trade offers.',
+      //       code: tradeData.code,
+      //     });
+      //   } 
+      //   // else if (tradeData.error === 'Login Failure') {
+      //   //   return res.status(500).json({
+      //   //     error: 'Re-login failed. Unable to send trade offer.',
+      //   //     code: tradeData.code,
+      //   //   });
+      //   // } 
+      //   // else if (tradeData.error === 'Max Retry Attempts') {
+      //   //   return res.status(500).json({
+      //   //     error: 'Max retry attempts reached. Unable to send trade offer.',
+      //   //     code: tradeData.code,
+      //   //   });
+      //   // } 
+      //   else {
+      //     return res.status(500).json({
+      //       error: tradeData.message || 'An unexpected error occurred while sending trade offer.',
+      //       code: tradeData.code || 'UNKNOWN_ERROR'
+      //     });
+      //   }
+      // }
+
+      // If trade offer is successful
       res.json({
         success: true,
         message: 'Trade offer sent. Please accept the offer to join the jackpot.',
         tradeOfferUrl: tradeData.offerUrl,
       });
-      trackTradeOffer(tradeData.offerId, userId, itemIds, jackpot._id);
-      
-      
-      // Track trade offer acceptance
+
+      // Track trade offer
+      if (tradeData.success) {
+        trackTradeOffer(tradeData.offerId, userId, itemIds, jackpot._id);
+      }
+      // trackTradeOffer(tradeData.offerId, userId, itemIds, jackpot._id);
 
     } catch (err) {
-      return res.status(500).json({ error: 'Failed to send trade offer to user' });
+      console.error('Error sending trade offer:', err);
+      return res.status(500).json({ error: err });
     }
 
   } catch (error) {
@@ -227,6 +307,71 @@ const joinJackpot = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+// const joinJackpot = async (req, res) => {
+//   try {
+//     const { userId, itemIds } = req.body; // Accept only userId and itemIds from the request
+
+//     // Validate user and items
+//     if (!userId || !itemIds || itemIds.length === 0) {
+//       return res.status(400).json({ error: 'User ID and item IDs are required' });
+//     }
+
+//     // Find or create the current jackpot (waiting or in-progress)
+//     let jackpot = await Jackpot.findOne({ status: { $in: ['in_progress', 'waiting'] } });
+//     if (!jackpot) {
+//       jackpot =  new Jackpot({ status: 'waiting', totalValue: 0, participants: [] });
+//       await jackpot.save();
+//     }
+
+//     // Fetch the user
+//     const user = await User.findById(userId);
+//     if (!user) return res.status(404).json({ error: 'User not found' });
+
+//     // Check if the user has a trade URL
+//     const tradeUrl = user.tradeUrl;
+//     if (!tradeUrl) {
+//       return res.json({
+//         msg: 'User does not have a Steam Trade URL. Please update your profile.',
+//         tradeUrl:false
+//        });
+//     }
+
+//     // Fetch the items
+//     const items = await Item.find({ _id: { $in: itemIds } });
+//     if (items.length === 0) return res.status(404).json({ error: 'No items found' });
+
+//     // Send trade offer to the user using their Trade URL from the user schema
+//     // console.log(process.env.TRADE_OFFER_URL);
+    
+//     try {
+//     // console.log(manager);
+//       // console.log(jackpot);
+      
+//       const tradeData = await sendTradeOfferToUser(tradeUrl,items);
+
+//       // Send trade URL to user
+//       // console.log(tradeData);
+//       // await addUserToJackpot(userId, itemIds, jackpot._id);
+//       res.json({
+//         success: true,
+//         message: 'Trade offer sent. Please accept the offer to join the jackpot.',
+//         tradeOfferUrl: tradeData.offerUrl,
+//       });
+//       trackTradeOffer(tradeData.offerId, userId, itemIds, jackpot._id);
+      
+      
+//       // Track trade offer acceptance
+
+//     } catch (err) {
+//       return res.status(500).json({ error: 'Failed to send trade offer to user' });
+//     }
+
+//   } catch (error) {
+//     console.error('Error joining jackpot:', error);
+//     res.status(500).json({ error: error.message });
+//   }
+// };
 
 
 // Get Jackpot Status
